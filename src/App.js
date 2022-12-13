@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import MapComponent from './components/MapComponent';
-import placeList from './placeList';
+import placesListData from './placesListData';
 
 function App() {
 
-  const [placesList, setPlacesList] = useState(placeList);
-
-  console.log(placeList);
+  const [placesList, setPlacesList] = useState(placesListData);
 
   const onPlaceSubmit = (placeData) => {
     let newPlace = placeData;

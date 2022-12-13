@@ -1,0 +1,200 @@
+[
+    {
+        "title": "518 Cornwall Way",
+        "description": "Where it all began. Sold our house and bought a travel trailer.",
+        "position": {
+          "lat": 44.00509849151154,
+          "lng": -116.9263177425554
+        },
+        "id": 1
+    },
+    {
+      "title": "11068 Musket St",
+      "description": "Stayed with family",
+      "position": {
+        "lat": 43.63911174529648,
+        "lng": -116.3202078229578
+      },
+      "id": 2
+    },
+    {
+      "title": "1161 E Cougar Creek Dr",
+      "description": "Stayed with family",
+      "position": {
+        "lat": 43.630560982196236,
+        "lng": -116.37941943369064
+      },
+      "id": 3
+    },
+    {
+      "title": "Grayback Gulch",
+      "description": "Our first foray into the wild :D",
+      "position": {
+        "lat": 43.807102568269464,
+        "lng": -115.86627890376614
+      },
+      "id": 4
+    },
+    {
+      "title": "Midvale Rest Area",
+      "description": "Stayed here for the night to wait out the storm.",
+      "position": {
+        "lat": 44.44529891071935,
+        "lng": -116.80051431679881
+      },
+      "id": 5
+    },
+    {
+      "title": "Northwest Passage Campground",
+      "description": "Stayed here a week, played in the river. Taught the dog how to swim.",
+      "position": {
+        "lat": 45.007169792402046,
+        "lng": -116.06220889966332
+      },
+      "id": 6
+    },
+    {
+      "title": "Union Creek Campground",
+      "description": "Stayed here for a couple of weeks, including July 4th. Family got sick.",
+      "position": {
+        "lat": 44.68701707567028,
+        "lng": -118.02924229725718
+      },
+      "id": 7
+    },
+    {
+      "title": "Emigrant Springs",
+      "description": "Stayed here for a couple weeks.",
+      "position": {
+        "lat": 45.53977621804201,
+        "lng": -118.46062594475045
+      },
+      "id": 8
+    },
+    {
+      "title": "Winchester Lake",
+      "description": "Stayed here a couple times, water was really murky.",
+      "position": {
+        "lat": 46.23571369432702,
+        "lng": -116.62462277675628
+      },
+      "id": 9
+    },
+    {
+      "title": "Huckleberry Campground",
+      "description": "Stayed here a couple of weeks. Cliff-jumping and playing in the river (very clear).",
+      "position": {
+        "lat": 47.268679345284966,
+        "lng": -116.08602271230386
+      },
+      "id": 10
+    },
+    {
+      "title": "Homestake",
+      "description": "Stayed here for a couple of weeks. Cleaned up campsites, chased cows, climbed rocks.",
+      "position": {
+        "lat": 45.92142455615054,
+        "lng": -112.38123315381695
+      },
+      "id": 11
+    },
+    {
+      "title": "Farewell Bend",
+      "description": "Stayed here for entirely too long, waiting for our youngest son to have a medical procedure.",
+      "position": {
+        "lat": 44.30802421399651,
+        "lng": -117.22274740550698
+      },
+      "id": 12
+    },
+    {
+      "title": "Bully Creek Reservoir",
+      "description": "Stayed here for a few days, in-between stays at Farewell Bend. Lots of dead fish, dirty bathrooms.",
+      "position": {
+        "lat": 44.02411920424808,
+        "lng": -117.40291849408618
+      },
+      "id": 13
+    },
+    {
+      "title": "Viento State Park",
+      "description": "Stayed for three nights. Waterfalls, fish hatchery, and watched people kite surfing.",
+      "position": {
+        "lat": 45.6980324077833,
+        "lng": -121.66620388745987
+      },
+      "id": 14
+    },
+    {
+      "title": "Hudson Parcher County Parker",
+      "description": "Stayed about a week. Magical campsite, but the bathrooms were a disaster.",
+      "position": {
+        "lat": 46.09119145784024,
+        "lng": -122.99723152789784
+      },
+      "id": 15
+    },
+    {
+      "title": "Boiler Bay State Scenic Viewpoint",
+      "description": "First night on the coast. Very windy, worried about getting kicked out.",
+      "position": {
+        "lat": 44.82886202812276,
+        "lng": -124.0653124134727
+      },
+      "id": 16
+    },
+    {
+      "title": "Bullards Beach",
+      "description": "Stayed here for a week or so. Beach was really cool, but not very close. Restrooms surrounded by a maze of thickets.",
+      "position": {
+        "lat": 43.155287924960646,
+        "lng": -124.39784503560789
+      },
+      "id": 17
+    },
+    {
+      "title": "Grassy Flat Free Camping",
+      "description": "Stayed here one night.",
+      "position": {
+        "lat": 41.8558102570391,
+        "lng": -123.88791193416847
+      },
+      "id": 18
+    },
+    {
+      "title": "Valley of the Rogue State Park",
+      "description": "Stayed here a week or so. Really awesome trails, narrow camp sites.",
+      "position": {
+        "lat": 42.40806564689148,
+        "lng": -123.14355675831095
+      },
+      "id": 19
+    },
+    {
+      "title": "Donner Pass Rest Area",
+      "description": "Stayed here one night.",
+      "position": {
+        "lat": 39.341177028744625,
+        "lng": -120.33989878791249
+      },
+      "id": 20
+    },
+    {
+      "title": "Water Canyon",
+      "description": "Stayed four nights.",
+      "position": {
+        "lat": 40.92428959883485,
+        "lng": -117.66368082118387
+      },
+      "id": 21
+    },
+    {
+      "title": "Travertine Hot Springs",
+      "description": "Stayed here one night.",
+      "position": {
+        "lat": 38.254410965667844,
+        "lng": -119.21018528071916
+      },
+      "id": 22
+    }
+]
