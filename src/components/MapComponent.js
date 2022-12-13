@@ -1,5 +1,5 @@
-import React from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import React, { useState } from 'react'
+import { GoogleMap, useJsApiLoader, Marker, InfoWindowF } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '900px',
@@ -11,23 +11,7 @@ const center = {
   lng: -112.31041498069737
 };
 
-function createContentString(place){
-  const contentString = 
-    "<div>"+
-      "<div>"+
-        "<h3>"+place.title+"</h3>"+
-      "</div>"+
-      "<div>"+
-        "<span><strong>Description:</strong> "+place.description+"</span>"+
-      "</div>"+
-      "<div>"+
-        "<span><strong>Location:</strong> "+place.lat+", "+place.lng+"</span>"+
-      "</div>"+
-    "</div>";
-  return contentString;
-}
-
-function MapComponent({placesList, placeData, onMapClick}) {
+function MapComponent({placesList, onPlaceSubmit}) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyBi54ehlrrs28I7qEeU1jA6mJKB0If9KkI"
@@ -35,91 +19,57 @@ function MapComponent({placesList, placeData, onMapClick}) {
 
   const [map, setMap] = React.useState(null);
 
+  const [mapPosition, setMapPosition] = React.useState(null);
+
+  const [activeMarker, setActiveMarker] = useState(0);
+
+  const [placeTitle, setPlaceTitle] = useState("");
+
+  const [placeDescription, setPlaceDescription] = useState("");
+
+  const onTitleChange = (event) => {
+    setPlaceTitle(event.target.value);
+  }
+
+  const onDescriptionChange = (event) => {
+    setPlaceDescription(event.target.value);
+  }
+  
+  const handleActiveMarker = (marker) => {
+    if (marker === activeMarker) {
+      return;
+    }
+    setActiveMarker(marker);
+  };
+
+  const submitNewPlace = () => {
+    if(!placeTitle || !placeDescription) return;
+    const newPlace = {
+      title: placeTitle,
+      description: placeDescription,
+      position: mapPosition
+    }
+    setPlaceTitle("");
+    setPlaceDescription("");
+    setActiveMarker(null);
+    onPlaceSubmit(newPlace);
+  }
+
   const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
+    const bounds = new window.google.maps.LatLngBounds();
+    placesList.map((place)=>{
+      return bounds.extend(place.position);
+    });
     map.fitBounds(bounds);
     setMap(map)
-    placesList.map((place,i) => {
-      const marker = new window.google.maps.Marker({
-        position: {lat: place.lat, lng: place.lng},
-        map,
-        title: place.title,
-      });
-
-      const infoWindow = new window.google.maps.InfoWindow({
-        content: createContentString(place)
-      });
-      marker.addListener("click", () => {
-        infoWindow.open({
-          anchor: marker,
-          map,
-        });
-      });
-      return marker;
-    });
-
+    
     window.google.maps.event.addListener(map, 'click', function(event) {
-    //  onMapClick(event.latLng.toJSON());
-    //  placeMarker(event.latLng);
-      openAddMarkerWindow(event);
+      setActiveMarker("New Marker");
+      setMapPosition(event.latLng.toJSON());
     });
     
-    function openAddMarkerWindow(event){
-      const marker = new window.google.maps.Marker({
-        position: event.latLng,
-        map
-      });
-      
-      const addMarkerWindow = new window.google.maps.InfoWindow({
-        title: "Add Place",
-        content: 
-        "<div>"+
-          "<input type='text' value='title' />"+
-        "</div>"+
-        "<div>"+
-          "<button onClick={clickMe()}>Click Me</button>"+
-        "</div>"
-      });
-
-      addMarkerWindow.open({
-        anchor: marker,
-        map,
-      });
-    }
-
-    function clickMe(event){
-      console.log("This probably won't work");
-    }
-
-    function placeMarker(location) {
-      var marker = new window.google.maps.Marker({
-        title: "New",
-        description: "Stuff",
-        position: location, 
-        map,
-        optimized: false,
-        draggable: true
-      });
-      placesList.push({
-        title: "New",
-        description: "Stuff",
-        lat: location.lat,
-        lng: location.lng
-      });
-      map.panTo(location);
-    }
-
-    function addMarker(location){
-      placesList.push({
-        title: placeData,
-        description: "Stuff",
-        lat: location.lat,
-        lng: location.lng
-      });
-    }
-
     return map;
-  }, [placesList, placeData, onMapClick]);
+  }, []);
 
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null)
@@ -129,10 +79,65 @@ function MapComponent({placesList, placeData, onMapClick}) {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      zoom={10}
+      defaultzoom={10}
       onLoad={onLoad}
       onUnmount={onUnmount}
-    ></GoogleMap>
+    >
+      { activeMarker==="New Marker" &&
+        <InfoWindowF
+          id="New Marker"
+          onCloseClick={()=> {setMapPosition(null); setActiveMarker(null)}}
+          position={mapPosition}
+        >
+          <div>
+            <h3>Add Place</h3>
+            <div style={{"display": "flex", "flexDirection": "column"}}>
+              <label htmlFor="place-title">Title</label>
+              <input
+                  id="place-title"
+                  name="place-title"
+                  type="text"
+                  value={placeTitle}
+                  onChange={onTitleChange}
+              />
+            </div>
+            <div style={{"display": "flex", "flexDirection": "column"}}>
+              <label htmlFor="place-description">Description</label>
+              <textarea
+                  id="place-description"
+                  name="place-description"
+                  type="text"
+                  value={placeDescription}
+                  onChange={onDescriptionChange}
+              />
+            </div>
+            <div>
+              <span htmlFor="place-lat">Latitude: {mapPosition.lat}</span>
+            </div>
+            <div>
+              <span htmlFor="place-lat">Longitude: {mapPosition.lng}</span>
+            </div>
+            <button onClick={submitNewPlace}>Submit New Place</button>
+          </div>
+        </InfoWindowF>
+      }
+      {placesList.map(({ id, title, description, position }) => (
+        <Marker
+          key={id}
+          position={position}
+          onClick={() => handleActiveMarker(id)}
+        >
+          {activeMarker === id ? (
+            <InfoWindowF onCloseClick={() => setActiveMarker(null)}>
+              <div key={id}>
+                <h3>{title}</h3>
+                <span>{description}</span>
+              </div>
+            </InfoWindowF>
+          ) : null}
+        </Marker>
+      ))}
+    </GoogleMap>
   ) : <></>
 }
 
