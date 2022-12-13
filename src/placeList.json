@@ -1,0 +1,56 @@
+[
+    {
+        "title": "Place 1",
+        "description": "asdffdsa",
+        "position": {
+        "lat": 40.54149320752432,
+        "lng": -112.31041498069737
+        },
+        "id": 1
+    },
+    {
+        "title": "Place 2",
+        "description": "rewqrew",
+        "position": {
+        "lat": 40.52149320752432,
+        "lng": -112.32051498069727
+        },
+        "id": 2
+    },
+    {
+        "title": "Place 3",
+        "description": "rewq",
+        "position": {
+        "lat": 40.55963900732105,
+        "lng": -112.30175993300523
+        },
+        "id": 3
+    },
+    {
+        "title": "Place 4",
+        "description": "gdsagf",
+        "position": {
+        "lat": 40.52963900733105,
+        "lng": -112.29165993301523
+        },
+        "id": 4
+    },
+    {
+        "title": "Place 5",
+        "description": "ttrewtre",
+        "position": {
+        "lat": 40.56963900734105,
+        "lng": -112.33195993302523
+        },
+        "id": 5
+    },
+    {
+        "title": "Place 6",
+        "description": "fdsaf",
+        "position": {
+        "lat": 40.590191333661394,
+        "lng": -112.25889333196689
+        },
+        "id": 6
+    }
+]
