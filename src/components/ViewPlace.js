@@ -5,7 +5,7 @@ const ViewPlace = ({activePlace, onTitleChange, onDescriptionChange, onSaveClick
     
     return(
 		editMode ?
-        <div key={activePlace.id}>
+        <div className="InfoWindow" key={activePlace.id}>
             <h3>Edit Place</h3>
             <div style={{"display": "flex", "flexDirection": "column"}}>
               <label htmlFor="place-title">Title</label>
@@ -31,7 +31,7 @@ const ViewPlace = ({activePlace, onTitleChange, onDescriptionChange, onSaveClick
             {editMode}
         </div>
         :
-        <div key={activePlace.id}>
+        <div className="InfoWindow" key={activePlace.id}>
             <h3>{activePlace.title}</h3>
             <p>{activePlace.description}</p>
             <button onClick={()=>setEditMode(true)}>Edit Place</button>

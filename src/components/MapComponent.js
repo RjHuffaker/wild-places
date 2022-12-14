@@ -4,8 +4,8 @@ import AddPlace from './AddPlace';
 import ViewPlace from './ViewPlace';
 
 const containerStyle = {
-  width: '900px',
-  height: '500px'
+  width: '600px',
+  height: '450px'
 };
 
 const center = {
@@ -88,6 +88,7 @@ function MapComponent({placesList, onPlaceSubmit, onPlaceUpdate}) {
     >
       { activePlace && activePlace.id===0 &&
         <InfoWindowF
+          className="InfoWindow"
           onCloseClick={()=> {setActivePlace(null)}}
           position={activePlace.position}
         >
