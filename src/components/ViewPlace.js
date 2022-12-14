@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const AddPlace = ({activePlace, onTitleChange, onDescriptionChange, submitNewPlace}) => {
-	return(
-		<div>
-            <h3>Add Place</h3>
+const ViewPlace = ({activePlace, onTitleChange, onDescriptionChange, onSaveClick}) => {
+    const [editMode, setEditMode] = useState(false)
+    
+    return(
+		editMode ?
+        <div key={activePlace.id}>
+            <h3>Edit Place</h3>
             <div style={{"display": "flex", "flexDirection": "column"}}>
               <label htmlFor="place-title">Title</label>
               <input
@@ -24,15 +27,17 @@ const AddPlace = ({activePlace, onTitleChange, onDescriptionChange, submitNewPla
                   onChange={onDescriptionChange}
               />
             </div>
-            <div>
-              <span htmlFor="place-lat">Latitude: {activePlace.position.lat}</span>
-            </div>
-            <div>
-              <span htmlFor="place-lat">Longitude: {activePlace.position.lng}</span>
-            </div>
-            <button onClick={submitNewPlace}>Submit New Place</button>
+            <button onClick={()=>{setEditMode(false); onSaveClick()}}>Save Changes</button>
+            {editMode}
+        </div>
+        :
+        <div key={activePlace.id}>
+            <h3>{activePlace.title}</h3>
+            <p>{activePlace.description}</p>
+            <button onClick={()=>setEditMode(true)}>Edit Place</button>
+            {editMode}
         </div>
 	)
 }
 
-export default AddPlace;
+export default ViewPlace;

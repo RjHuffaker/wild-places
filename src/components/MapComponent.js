@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { GoogleMap, useJsApiLoader, Marker, InfoWindowF } from '@react-google-maps/api';
+import AddPlace from './AddPlace';
+import ViewPlace from './ViewPlace';
 
 const containerStyle = {
   width: '900px',
@@ -11,48 +13,44 @@ const center = {
   lng: -112.31041498069737
 };
 
-function MapComponent({placesList, onPlaceSubmit}) {
+function MapComponent({placesList, onPlaceSubmit, onPlaceUpdate}) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyBi54ehlrrs28I7qEeU1jA6mJKB0If9KkI"
+    googleMapsApiKey: ""
   });
 
   const [map, setMap] = React.useState(null);
 
-  const [mapPosition, setMapPosition] = React.useState(null);
-
-  const [activeMarker, setActiveMarker] = useState(0);
-
-  const [placeTitle, setPlaceTitle] = useState("");
-
-  const [placeDescription, setPlaceDescription] = useState("");
+  const [activePlace, setActivePlace] = useState(null);
 
   const onTitleChange = (event) => {
-    setPlaceTitle(event.target.value);
+    setActivePlace((activePlace) => ({
+      ...activePlace,
+      title: event.target.value
+    }));
   }
 
   const onDescriptionChange = (event) => {
-    setPlaceDescription(event.target.value);
+    setActivePlace((activePlace) => ({
+      ...activePlace,
+      description: event.target.value
+    }));
   }
-  
-  const handleActiveMarker = (marker) => {
-    if (marker === activeMarker) {
+
+  const onMarkerClick = (place) => {
+    if (activePlace && activePlace.id === place.id) {
       return;
     }
-    setActiveMarker(marker);
-  };
+    setActivePlace(place);
+  }
+
+  const onSaveClick = () => {
+    onPlaceUpdate(activePlace);
+  }
 
   const submitNewPlace = () => {
-    if(!placeTitle || !placeDescription) return;
-    const newPlace = {
-      title: placeTitle,
-      description: placeDescription,
-      position: mapPosition
-    }
-    setPlaceTitle("");
-    setPlaceDescription("");
-    setActiveMarker(null);
-    onPlaceSubmit(newPlace);
+    setActivePlace(null);
+    onPlaceSubmit(activePlace);
   }
 
   const onLoad = React.useCallback(function callback(map) {
@@ -64,12 +62,17 @@ function MapComponent({placesList, onPlaceSubmit}) {
     setMap(map)
     
     window.google.maps.event.addListener(map, 'click', function(event) {
-      setActiveMarker("New Marker");
-      setMapPosition(event.latLng.toJSON());
+      setActivePlace({
+        id: 0,
+        title: "",
+        description: "",
+        position: event.latLng.toJSON()
+      });
+      console.log(activePlace);
     });
     
     return map;
-  }, []);
+  }, [activePlace, placesList]);
 
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null)
@@ -83,56 +86,35 @@ function MapComponent({placesList, onPlaceSubmit}) {
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      { activeMarker==="New Marker" &&
+      { activePlace && activePlace.id===0 &&
         <InfoWindowF
-          id="New Marker"
-          onCloseClick={()=> {setMapPosition(null); setActiveMarker(null)}}
-          position={mapPosition}
+          onCloseClick={()=> {setActivePlace(null)}}
+          position={activePlace.position}
         >
-          <div>
-            <h3>Add Place</h3>
-            <div style={{"display": "flex", "flexDirection": "column"}}>
-              <label htmlFor="place-title">Title</label>
-              <input
-                  id="place-title"
-                  name="place-title"
-                  type="text"
-                  value={placeTitle}
-                  onChange={onTitleChange}
-              />
-            </div>
-            <div style={{"display": "flex", "flexDirection": "column"}}>
-              <label htmlFor="place-description">Description</label>
-              <textarea
-                  id="place-description"
-                  name="place-description"
-                  type="text"
-                  value={placeDescription}
-                  onChange={onDescriptionChange}
-              />
-            </div>
-            <div>
-              <span htmlFor="place-lat">Latitude: {mapPosition.lat}</span>
-            </div>
-            <div>
-              <span htmlFor="place-lat">Longitude: {mapPosition.lng}</span>
-            </div>
-            <button onClick={submitNewPlace}>Submit New Place</button>
-          </div>
+          <AddPlace
+            activePlace={activePlace}
+            onTitleChange={onTitleChange}
+            onDescriptionChange={onDescriptionChange}
+            submitNewPlace={submitNewPlace}
+          />
         </InfoWindowF>
       }
-      {placesList.map(({ id, title, description, position }) => (
+      {placesList.map((place) => (
         <Marker
-          key={id}
-          position={position}
-          onClick={() => handleActiveMarker(id)}
+          key={place.id}
+          position={place.position}
+          onClick={() => onMarkerClick(place)}
         >
-          {activeMarker === id ? (
-            <InfoWindowF onCloseClick={() => setActiveMarker(null)}>
-              <div key={id}>
-                <h3>{title}</h3>
-                <span>{description}</span>
-              </div>
+          {activePlace && activePlace.id === place.id ? (
+            <InfoWindowF
+              onCloseClick={() => setActivePlace(null)}
+            >
+              <ViewPlace
+                activePlace={activePlace}
+                onTitleChange={onTitleChange}
+                onDescriptionChange={onDescriptionChange}
+                onSaveClick={onSaveClick}
+              />
             </InfoWindowF>
           ) : null}
         </Marker>
