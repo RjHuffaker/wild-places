@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/wild-places/static/css/main.f28a15d6.css",
-    "main.js": "/wild-places/static/js/main.2245c3a4.js",
+    "main.js": "/wild-places/static/js/main.9bcb34ed.js",
     "static/js/787.826d7839.chunk.js": "/wild-places/static/js/787.826d7839.chunk.js",
     "index.html": "/wild-places/index.html",
     "main.f28a15d6.css.map": "/wild-places/static/css/main.f28a15d6.css.map",
-    "main.2245c3a4.js.map": "/wild-places/static/js/main.2245c3a4.js.map",
+    "main.9bcb34ed.js.map": "/wild-places/static/js/main.9bcb34ed.js.map",
     "787.826d7839.chunk.js.map": "/wild-places/static/js/787.826d7839.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f28a15d6.css",
-    "static/js/main.2245c3a4.js"
+    "static/js/main.9bcb34ed.js"
   ]
 }
