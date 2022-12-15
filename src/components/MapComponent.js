@@ -4,8 +4,8 @@ import AddPlace from './AddPlace';
 import ViewPlace from './ViewPlace';
 
 const containerStyle = {
-  width: '500px',
-  height: '400px'
+  width: '400px',
+  height: '300px'
 };
 
 const center = {

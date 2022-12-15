@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="flex flex-column items-center">
       <h1 className="f1">Wild Places</h1>
-      <div style={{"width":"500px"}}>
+      <div style={{"width":"400px"}}>
         <p>
           In May of 2021, we sold our home in the suburbs and purchased a truck and 30ft travel trailer. On June 1st, 2021 we then embarked upon a journey of indeterminate length and destination, an adventure that is still in the making to this day.
         </p>
