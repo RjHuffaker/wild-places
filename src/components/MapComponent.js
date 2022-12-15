@@ -4,8 +4,8 @@ import AddPlace from './AddPlace';
 import ViewPlace from './ViewPlace';
 
 const containerStyle = {
-  width: '600px',
-  height: '450px'
+  width: '500px',
+  height: '400px'
 };
 
 const center = {
@@ -13,7 +13,7 @@ const center = {
   lng: -112.31041498069737
 };
 
-function MapComponent({placesList, onPlaceSubmit, onPlaceUpdate}) {
+function MapComponent({placesList, onPlaceSubmit, onPlaceUpdate, onPlaceDelete}) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: ""
@@ -46,6 +46,13 @@ function MapComponent({placesList, onPlaceSubmit, onPlaceUpdate}) {
 
   const onSaveClick = () => {
     onPlaceUpdate(activePlace);
+  }
+
+  const onDeleteClick = () => {
+    if(window.confirm("Delete '"+activePlace.title+"'?")){
+      setActivePlace(null);
+      onPlaceDelete(activePlace);
+    }
   }
 
   const submitNewPlace = () => {
@@ -82,7 +89,7 @@ function MapComponent({placesList, onPlaceSubmit, onPlaceUpdate}) {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      defaultzoom={10}
+      defaultZoom={10}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
@@ -115,6 +122,7 @@ function MapComponent({placesList, onPlaceSubmit, onPlaceUpdate}) {
                 onTitleChange={onTitleChange}
                 onDescriptionChange={onDescriptionChange}
                 onSaveClick={onSaveClick}
+                onDeleteClick={onDeleteClick}
               />
             </InfoWindowF>
           ) : null}

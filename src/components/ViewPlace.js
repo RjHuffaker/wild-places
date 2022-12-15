@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const ViewPlace = ({activePlace, onTitleChange, onDescriptionChange, onSaveClick}) => {
+const ViewPlace = ({activePlace, onTitleChange, onDescriptionChange, onSaveClick, onDeleteClick}) => {
     const [editMode, setEditMode] = useState(false)
     
     return(
@@ -28,6 +28,7 @@ const ViewPlace = ({activePlace, onTitleChange, onDescriptionChange, onSaveClick
               />
             </div>
             <button onClick={()=>{setEditMode(false); onSaveClick()}}>Save Changes</button>
+            <button onClick={()=>{setEditMode(false); onDeleteClick()}}>Delete Place</button>
             {editMode}
         </div>
         :
