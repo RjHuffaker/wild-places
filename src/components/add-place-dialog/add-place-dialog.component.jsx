@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddPlace = ({activePlace, onTitleChange, onDescriptionChange, submitNewPlace}) => {
+const AddPlaceDialog = ({activePlace, onTitleChange, onDescriptionChange, submitNewPlace}) => {
 	return(
 		<div className="InfoWindow">
       <h3>Add Place</h3>
@@ -35,4 +35,4 @@ const AddPlace = ({activePlace, onTitleChange, onDescriptionChange, submitNewPla
 	)
 }
 
-export default AddPlace;
+export default AddPlaceDialog;

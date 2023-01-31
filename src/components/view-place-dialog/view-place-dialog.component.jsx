@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const ViewPlace = ({activePlace, onTitleChange, onDescriptionChange, onSaveClick, onDeleteClick}) => {
+const ViewPlaceDialog = ({activePlace, onTitleChange, onDescriptionChange, onSaveClick, onDeleteClick}) => {
     const [editMode, setEditMode] = useState(false)
     
     return(
@@ -41,4 +41,4 @@ const ViewPlace = ({activePlace, onTitleChange, onDescriptionChange, onSaveClick
 	)
 }
 
-export default ViewPlace;
+export default ViewPlaceDialog;

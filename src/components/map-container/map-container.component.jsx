@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, InfoWindowF } from '@react-google-maps/api';
-import AddPlace from './AddPlace';
-import ViewPlace from './ViewPlace';
+import AddPlaceDialog from '../add-place-dialog/add-place-dialog.component';
+import ViewPlaceDialog from '../view-place-dialog/view-place-dialog.component';
 
 const containerStyle = {
   width: '400px',
@@ -13,13 +13,13 @@ const center = {
   lng: -112.31041498069737
 };
 
-function MapComponent({placesList, onPlaceSubmit, onPlaceUpdate, onPlaceDelete}) {
+const MapContainer = ({placesList, onPlaceSubmit, onPlaceUpdate, onPlaceDelete}) => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: ""
   });
 
-  const [map, setMap] = React.useState(null);
+  const [map, setMap] = useState(null);
 
   const [activePlace, setActivePlace] = useState(null);
 
@@ -99,7 +99,7 @@ function MapComponent({placesList, onPlaceSubmit, onPlaceUpdate, onPlaceDelete})
           onCloseClick={()=> {setActivePlace(null)}}
           position={activePlace.position}
         >
-          <AddPlace
+          <AddPlaceDialog
             activePlace={activePlace}
             onTitleChange={onTitleChange}
             onDescriptionChange={onDescriptionChange}
@@ -117,7 +117,7 @@ function MapComponent({placesList, onPlaceSubmit, onPlaceUpdate, onPlaceDelete})
             <InfoWindowF
               onCloseClick={() => setActivePlace(null)}
             >
-              <ViewPlace
+              <ViewPlaceDialog
                 activePlace={activePlace}
                 onTitleChange={onTitleChange}
                 onDescriptionChange={onDescriptionChange}
@@ -132,4 +132,4 @@ function MapComponent({placesList, onPlaceSubmit, onPlaceUpdate, onPlaceDelete})
   ) : <></>
 }
 
-export default React.memo(MapComponent)
+export default MapContainer;
