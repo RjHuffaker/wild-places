@@ -7,11 +7,11 @@ const Navigation = () => {
             <div>
                 <div>
                     <a href='/'>
-                        Home
+                        Map
                     </a>
                     &nbsp;
-                    <a href='/map'>
-                        Map
+                    <a href='/home'>
+                        Home
                     </a>
                     &nbsp;
                     <a href='/auth'>

@@ -13,8 +13,8 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<Navigation />}>
-        <Route path='/' element={<Home />}></Route>
-        <Route path='/map' element={<PlacesMap />}></Route>
+        <Route index element={<PlacesMap />}></Route>
+        <Route path='/home' element={<Home />}></Route>
         <Route path='/auth' element={<Authentication />}></Route>
       </Route>
     </Routes>
