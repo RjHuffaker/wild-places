@@ -1,7 +1,9 @@
+import SignIn from "../../components/sign-in/sign-in.component";
+
 const Authentication = () => {
     return (
       <div>
-        <h1>I am the Authentication page</h1>
+        <SignIn></SignIn>
       </div>
     );
 }

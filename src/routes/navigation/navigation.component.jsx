@@ -1,24 +1,35 @@
 import { Fragment } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import Logo from '../../assets/evergreenmountains.png';
+
+import {
+    NavigationContainer,
+    LogoContainer,
+    LogoImg,
+    NavLinks,
+    NavLink
+} from './navigation.styles.jsx';
+
 const Navigation = () => {
     return (
         <Fragment>
-            <div>
-                <div>
-                    <a href='/'>
+            <NavigationContainer>
+                <LogoContainer to='/'>
+                    <LogoImg src={Logo} alt="Logo" />
+                </LogoContainer>
+                <NavLinks>
+                    <NavLink to='/'>
                         Map
-                    </a>
-                    &nbsp;
-                    <a href='/home'>
+                    </NavLink>
+                    <NavLink to='/home'>
                         Home
-                    </a>
-                    &nbsp;
-                    <a href='/auth'>
+                    </NavLink>
+                    <NavLink to='/auth'>
                         Authentication
-                    </a>
-                </div>
-            </div>
+                    </NavLink>
+                </NavLinks>
+            </NavigationContainer>
             <Outlet />
         </Fragment>
     )
