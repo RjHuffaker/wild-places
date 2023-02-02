@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.d4b4b304.css",
-    "main.js": "/static/js/main.e0c84acb.js",
-    "static/media/evergreenmountains.png": "/static/media/evergreenmountains.d2ec3d78987b6c802423.png",
-    "index.html": "/index.html",
-    "main.d4b4b304.css.map": "/static/css/main.d4b4b304.css.map",
-    "main.e0c84acb.js.map": "/static/js/main.e0c84acb.js.map"
+    "main.css": "/wild-places/static/css/main.254eb8ae.css",
+    "main.js": "/wild-places/static/js/main.19d733af.js",
+    "static/media/old_map.jpg": "/wild-places/static/media/old_map.3da9e0cec613b3441101.jpg",
+    "static/media/mtn_logo.png": "/wild-places/static/media/mtn_logo.3804cbc68f26d079a210.png",
+    "index.html": "/wild-places/index.html",
+    "main.254eb8ae.css.map": "/wild-places/static/css/main.254eb8ae.css.map",
+    "main.19d733af.js.map": "/wild-places/static/js/main.19d733af.js.map"
   },
   "entrypoints": [
-    "static/css/main.d4b4b304.css",
-    "static/js/main.e0c84acb.js"
+    "static/css/main.254eb8ae.css",
+    "static/js/main.19d733af.js"
   ]
 }
