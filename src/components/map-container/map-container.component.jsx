@@ -4,8 +4,8 @@ import AddPlaceDialog from '../add-place-dialog/add-place-dialog.component';
 import ViewPlaceDialog from '../view-place-dialog/view-place-dialog.component';
 
 const containerStyle = {
-  width: '400px',
-  height: '300px'
+  width: '90%',
+  height: '100%'
 };
 
 const center = {
@@ -16,7 +16,7 @@ const center = {
 const MapContainer = ({placesList, onPlaceSubmit, onPlaceUpdate, onPlaceDelete}) => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: ""
+    googleMapsApiKey: "AIzaSyBi54ehlrrs28I7qEeU1jA6mJKB0If9KkI"
   });
 
   const [map, setMap] = useState(null);

@@ -1,12 +1,13 @@
 import { Fragment } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import Logo from '../../assets/evergreenmountains.png';
+import Logo from '../../assets/mtn_logo.png';
 
 import {
     NavigationContainer,
     LogoContainer,
     LogoImg,
+    NavTitle,
     NavLinks,
     NavLink
 } from './navigation.styles.jsx';
@@ -18,6 +19,7 @@ const Navigation = () => {
                 <LogoContainer to='/'>
                     <LogoImg src={Logo} alt="Logo" />
                 </LogoContainer>
+                <NavTitle className="f1">Wild Places</NavTitle>
                 <NavLinks>
                     <NavLink to='/'>
                         Map
@@ -26,7 +28,7 @@ const Navigation = () => {
                         Home
                     </NavLink>
                     <NavLink to='/auth'>
-                        Authentication
+                        Sign In
                     </NavLink>
                 </NavLinks>
             </NavigationContainer>

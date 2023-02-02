@@ -36,19 +36,7 @@ function PlacesMap() {
   }
 
   return (
-    <div className="flex flex-column items-center">
-      <h1 className="f1">Wild Places</h1>
-      <div style={{"width":"100%", "padding":"4px"}}>
-        <p>
-          In May of 2021, we sold our home in the suburbs and purchased a truck and 30ft travel trailer. On June 1st, 2021 we then embarked upon a journey of indeterminate length and destination, an adventure that is still in the making to this day.
-        </p>
-        <p>
-          It would be impossible to relate all of the wild and outlandish things that we have experienced, but here is a map displaying all of the places where we have stayed for a night or more. Click on a marker for a brief description of each location.
-        </p>
-        <p>
-          You can also add, edit, and delete places, but any changes will not be persisted to memory.
-        </p>
-      </div>
+    <div className="flex flex-column items-center" style={{height: '80%'}}>
       <MapContainer
         placesList={placesList}
         onPlaceSubmit={onPlaceSubmit}

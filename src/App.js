@@ -16,6 +16,7 @@ function App() {
         <Route index element={<PlacesMap />}></Route>
         <Route path='/home' element={<Home />}></Route>
         <Route path='/auth' element={<Authentication />}></Route>
+        <Route path='/wild-places' element={<PlacesMap />}></Route>
       </Route>
     </Routes>
     
