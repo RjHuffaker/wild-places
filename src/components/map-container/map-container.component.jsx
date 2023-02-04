@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, InfoWindowF } from '@react-google-maps/api';
 import AddPlaceDialog from '../add-place-dialog/add-place-dialog.component';
 import ViewPlaceDialog from '../view-place-dialog/view-place-dialog.component';
@@ -9,11 +9,12 @@ const containerStyle = {
 };
 
 const center = {
-  lat: 40.54149320752432,
-  lng: -112.31041498069737
+  lat: 40,
+  lng: -112
 };
 
-const MapContainer = ({placesList, onPlaceSubmit, onPlaceUpdate, onPlaceDelete}) => {
+const MapContainer = ({places, onPlaceSubmit, onPlaceUpdate, onPlaceDelete}) => {
+  
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyBi54ehlrrs28I7qEeU1jA6mJKB0If9KkI"
@@ -60,9 +61,9 @@ const MapContainer = ({placesList, onPlaceSubmit, onPlaceUpdate, onPlaceDelete})
     onPlaceSubmit(activePlace);
   }
 
-  const onLoad = React.useCallback(function callback(map) {
+  const onLoad = useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
-    placesList.map((place)=>{
+    places.map((place)=>{
       return bounds.extend(place.position);
     });
     map.fitBounds(bounds);
@@ -75,13 +76,12 @@ const MapContainer = ({placesList, onPlaceSubmit, onPlaceUpdate, onPlaceDelete})
         description: "",
         position: event.latLng.toJSON()
       });
-      console.log(activePlace);
     });
     
     return map;
-  }, [activePlace, placesList]);
+  }, [places]);
 
-  const onUnmount = React.useCallback(function callback(map) {
+  const onUnmount = useCallback(function callback(map) {
     setMap(null)
   }, []);
 
@@ -107,7 +107,7 @@ const MapContainer = ({placesList, onPlaceSubmit, onPlaceUpdate, onPlaceDelete})
           />
         </InfoWindowF>
       }
-      {placesList.map((place) => (
+      {places.map((place) => (
         <Marker
           key={place.id}
           position={place.position}
