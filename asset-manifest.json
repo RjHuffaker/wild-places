@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/wild-places/static/css/main.815a322f.css",
-    "main.js": "/wild-places/static/js/main.58744d53.js",
+    "main.js": "/wild-places/static/js/main.d2b16411.js",
     "static/media/old_map.jpg": "/wild-places/static/media/old_map.3da9e0cec613b3441101.jpg",
     "static/media/mtn_logo.png": "/wild-places/static/media/mtn_logo.3804cbc68f26d079a210.png",
     "index.html": "/wild-places/index.html",
     "main.815a322f.css.map": "/wild-places/static/css/main.815a322f.css.map",
-    "main.58744d53.js.map": "/wild-places/static/js/main.58744d53.js.map"
+    "main.d2b16411.js.map": "/wild-places/static/js/main.d2b16411.js.map"
   },
   "entrypoints": [
     "static/css/main.815a322f.css",
-    "static/js/main.58744d53.js"
+    "static/js/main.d2b16411.js"
   ]
 }
