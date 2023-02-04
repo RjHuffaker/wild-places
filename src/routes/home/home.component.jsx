@@ -8,9 +8,6 @@ const Home = () => {
         <p>
           It would be impossible to relate all of the wild and outlandish things that we have experienced, but here is a map displaying all of the places where we have stayed for a night or more. Click on a marker for a brief description of each location.
         </p>
-        <p>
-          You can also add, edit, and delete places, but any changes will not be persisted to memory.
-        </p>
         <img src="https://imgur.com/tzzz4zq.jpg" alt='jeep' />
       </div>
     );
